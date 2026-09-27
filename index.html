@@ -13,22 +13,11 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
 <style>
 :root{
-    /* === BLUE PREMIUM PALETTE (matches Misi 5) === */
-    --geo-950:#030a1a;
-    --geo-900:#050f24;
-    --geo-800:#0a1930;
-    --geo-700:#112a5c;
-    --geo-600:#1d4ed8;
-    --geo-500:#2563eb;
-    --geo-400:#3b82f6;
-    --geo-300:#60a5fa;
-    --geo-200:#93c5fd;
-    --geo-100:#dbeafe;
-    --cyan:#06b6d4;
-    --cyan-2:#22d3ee;
-    --purple:#8b5cf6;
-    --gold:#fbbf24;
-
+    --geo-950:#030a1a;--geo-900:#050f24;--geo-800:#0a1930;--geo-700:#112a5c;
+    --geo-600:#1d4ed8;--geo-500:#2563eb;--geo-400:#3b82f6;--geo-300:#60a5fa;
+    --geo-200:#93c5fd;--geo-100:#dbeafe;
+    --cyan:#06b6d4;--cyan-2:#22d3ee;--purple:#8b5cf6;--gold:#fbbf24;
+    --emerald:#10b981;--rose:#f43f5e;--amber:#f59e0b;
     --ink:#0f172a;--muted:#52607a;--muted-2:#6b7a95;
     --card:rgba(255,255,255,.9);--card-solid:#fdfefd;
     --stroke:rgba(255,255,255,.75);--stroke-soft:rgba(37,99,235,.16);
@@ -48,29 +37,19 @@ body{
         radial-gradient(900px 700px at 50% 110%, rgba(96,165,250,.24), transparent 60%),
         linear-gradient(160deg,#eef2ff 0%,#f8fafc 45%,#eff6ff 100%);
     background-attachment:fixed;overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;overflow-wrap:break-word;
-    font-size:16px;
+    -webkit-font-smoothing:antialiased;overflow-wrap:break-word;font-size:16px;
 }
 body.loading{overflow:hidden;}
 body.no-motion *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
 :focus-visible{outline:3px solid var(--geo-500);outline-offset:3px;border-radius:8px;}
 button{touch-action:manipulation;font-family:inherit;}
 
-/* === MODERN: CURSOR AURA === */
-.cursor-aura{
-    position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;
-    background:radial-gradient(circle,rgba(59,130,246,.14) 0%,transparent 65%);
-    transform:translate(-50%,-50%);transition:opacity .4s;opacity:0;will-change:transform;
-    mix-blend-mode:multiply;
-}
+/* CURSOR AURA */
+.cursor-aura{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(59,130,246,.14) 0%,transparent 65%);transform:translate(-50%,-50%);transition:opacity .4s;opacity:0;will-change:transform;mix-blend-mode:multiply;}
 body:hover .cursor-aura{opacity:1;}
 
-/* === MODERN: NOISE TEXTURE === */
-body::after{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode:overlay;
-}
+/* NOISE */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:998;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;}
 
 /* LOADER */
 .loader{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at center, #0a1930 0%, #030a1a 100%);transition:opacity .6s ease, visibility .6s ease;}
@@ -85,7 +64,7 @@ body::after{
 .loader-percent{margin-top:10px;font-size:1rem;font-weight:700;letter-spacing:2px;color:var(--geo-300);font-variant-numeric:tabular-nums;}
 .loader-percent b{color:#dbeafe;font-weight:800;}
 
-/* BG DECOR */
+/* BG */
 .bg-decor{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
 .blob{position:absolute;border-radius:50%;filter:blur(75px);opacity:.5;animation:float 16s ease-in-out infinite;}
 .blob.b1{width:300px;height:300px;background:var(--geo-400);top:-100px;left:-80px;}
@@ -95,15 +74,10 @@ body::after{
 @keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1);}33%{transform:translate3d(25px,-28px,0) scale(1.08);}66%{transform:translate3d(-20px,20px,0) scale(.95);}}
 .bg-decor::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.07) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(circle at 50% 30%,#000 10%,transparent 78%);-webkit-mask-image:radial-gradient(circle at 50% 30%,#000 10%,transparent 78%);}
 
-/* === MODERN: FLOATING PARTICLES === */
+/* PARTICLES */
 .particles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
 .particles span{position:absolute;width:4px;height:4px;border-radius:50%;background:linear-gradient(135deg,var(--geo-300),var(--geo-500));box-shadow:0 0 12px rgba(59,130,246,.7);animation:rise linear infinite;}
-@keyframes rise{
-    0%{transform:translateY(100vh) scale(0);opacity:0;}
-    10%{opacity:1;transform:translateY(90vh) scale(1);}
-    90%{opacity:1;}
-    100%{transform:translateY(-10vh) scale(.3);opacity:0;}
-}
+@keyframes rise{0%{transform:translateY(100vh) scale(0);opacity:0;}10%{opacity:1;transform:translateY(90vh) scale(1);}90%{opacity:1;}100%{transform:translateY(-10vh) scale(.3);opacity:0;}}
 
 /* NAVBAR */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:10px 16px;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(37,99,235,.12);transition:all .4s var(--ease);transform:translateY(-100%);}
@@ -130,15 +104,8 @@ body::after{
 .header{position:relative;z-index:2;padding:70px 18px 94px;text-align:center;color:#fff;background:radial-gradient(600px 260px at 20% 0%, rgba(96,165,250,.40), transparent 60%),radial-gradient(600px 280px at 85% 10%, rgba(29,78,216,.55), transparent 60%),linear-gradient(135deg,var(--geo-900) 0%, var(--geo-800) 45%, var(--geo-600) 100%);border-radius:0 0 32px 32px;overflow:hidden;box-shadow:0 20px 50px -25px rgba(5,15,36,.75);}
 .header::before{content:"";position:absolute;top:0;left:-60%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(147,197,253,.28),transparent);transform:skewX(-18deg);animation:sheen 6.5s ease-in-out infinite;pointer-events:none;}
 @keyframes sheen{0%{left:-60%;}55%,100%{left:130%;}}
-
-/* === MODERN: AURORA ORB BEHIND HEADER === */
-.header::after{
-    content:"";position:absolute;width:400px;height:400px;border-radius:50%;
-    background:radial-gradient(circle,rgba(139,92,246,.35),transparent 65%);
-    top:-150px;right:-100px;filter:blur(60px);animation:auroraFloat 8s ease-in-out infinite;pointer-events:none;
-}
+.header::after{content:"";position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.35),transparent 65%);top:-150px;right:-100px;filter:blur(60px);animation:auroraFloat 8s ease-in-out infinite;pointer-events:none;}
 @keyframes auroraFloat{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,30px) scale(1.15);}}
-
 .header-badge{display:inline-flex;align-items:center;gap:7px;padding:7px 17px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(147,197,253,.45);backdrop-filter:blur(10px);font-size:.8rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#dbeafe;margin-bottom:16px;animation:fadeUp .7s .1s both;position:relative;z-index:1;}
 .header-badge .pulse{width:7px;height:7px;border-radius:50%;background:var(--geo-300);box-shadow:0 0 10px var(--geo-300);animation:pulseDot 1.4s ease-in-out infinite;}
 @keyframes pulseDot{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:.5;}}
@@ -177,35 +144,14 @@ body::after{
 .section-head h2 .hl{background:linear-gradient(120deg,var(--geo-600),var(--geo-400),var(--geo-300));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradientMove 5s linear infinite;}
 .section-head .section-sub{font-size:1rem;line-height:1.6;color:var(--muted);max-width:560px;margin:0 auto;}
 
-/* GRID & CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;align-items:stretch;}
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;align-items:stretch;}
 
-/* === MODERN: DARK PREMIUM CARDS === */
-.card{
-    position:relative;display:flex;flex-direction:column;
-    background:linear-gradient(155deg,#112a5c 0%, #0a1930 60%, #050f24 100%);
-    border:1px solid rgba(96,165,250,.22);border-radius:var(--radius);
-    padding:20px 18px 16px;
-    box-shadow:0 20px 44px -22px rgba(5,15,36,.7),inset 0 1px 0 rgba(147,197,253,.08);
-    overflow:hidden;
-    transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s;
-    animation:cardIn .8s both;
-    color:#fff;
-    isolation:isolate;
-}
-/* Spotlight follow mouse */
-.card::before{
-    content:"";position:absolute;inset:0;border-radius:var(--radius);
-    background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(96,165,250,.18), transparent 45%);
-    opacity:0;transition:opacity .4s;pointer-events:none;z-index:0;
-}
+/* === CARDS === */
+.card{position:relative;display:flex;flex-direction:column;background:linear-gradient(155deg,#112a5c 0%, #0a1930 60%, #050f24 100%);border:1px solid rgba(96,165,250,.22);border-radius:var(--radius);padding:20px 18px 16px;box-shadow:0 20px 44px -22px rgba(5,15,36,.7),inset 0 1px 0 rgba(147,197,253,.08);overflow:hidden;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s;animation:cardIn .8s both;color:#fff;isolation:isolate;}
+.card::before{content:"";position:absolute;inset:0;border-radius:var(--radius);background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(96,165,250,.18), transparent 45%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:0;}
 .card:hover::before{opacity:1;}
-/* Top accent line (gradient animated) */
-.card::after{
-    content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:linear-gradient(90deg,var(--geo-500),var(--geo-300) 40%,var(--cyan) 75%,var(--geo-500));
-    background-size:200% 100%;animation:lineSlide 4s linear infinite;z-index:1;
-}
+.card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--geo-500),var(--geo-300) 40%,var(--cyan) 75%,var(--geo-500));background-size:200% 100%;animation:lineSlide 4s linear infinite;z-index:1;}
 .grid .card:nth-child(1){animation-delay:.1s;}
 .grid .card:nth-child(2){animation-delay:.18s;}
 .grid .card:nth-child(3){animation-delay:.26s;}
@@ -216,10 +162,81 @@ body::after{
 .card-link:hover{transform:translateY(-8px) scale(1.015);border-color:rgba(96,165,250,.55);box-shadow:0 30px 60px -20px rgba(29,78,216,.7),0 0 0 1px rgba(96,165,250,.35),inset 0 1px 0 rgba(147,197,253,.15);}
 
 .badge{position:absolute;top:14px;right:14px;z-index:2;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;color:#dbeafe;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.4);backdrop-filter:blur(8px);}
-.card .ico{position:relative;z-index:1;display:grid;place-items:center;width:48px;height:48px;flex:0 0 48px;font-size:23px;border-radius:13px;margin-bottom:12px;background:linear-gradient(135deg,var(--geo-400),var(--geo-600));box-shadow:0 8px 22px -8px rgba(59,130,246,.85),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .4s;color:#fff;}
+
+/* === NEW: ICON + TITLE ROW === */
+.card-head{position:relative;z-index:1;display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+
+/* === NEW: MORE MEANINGFUL ICONS === */
+.card .ico{
+    position:relative;z-index:1;
+    display:grid;place-items:center;
+    width:52px;height:52px;flex:0 0 52px;
+    font-size:22px;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--geo-400),var(--geo-600));
+    box-shadow:0 8px 22px -8px rgba(59,130,246,.85),inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .4s;color:#fff;
+    position:relative;overflow:hidden;
+}
+.card .ico::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,255,255,.28),transparent 55%);
+    pointer-events:none;
+}
+.card .ico::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 120%, rgba(255,255,255,.3), transparent 60%);
+    pointer-events:none;
+}
 .card:hover .ico{transform:rotate(-8deg) scale(1.12);}
-.card h3{position:relative;z-index:1;margin:0 0 7px;font-size:1.08rem;font-weight:800;line-height:1.3;letter-spacing:-.01em;color:#fff;padding-right:6px;}
-.card .desc{position:relative;z-index:1;margin:0 0 12px;font-size:.9rem;line-height:1.6;color:rgba(219,234,254,.72);}
+
+/* Icon color variants per card */
+.card:nth-child(1) .ico{background:linear-gradient(135deg,#60a5fa,#1d4ed8);box-shadow:0 8px 22px -8px rgba(96,165,250,.95),inset 0 1px 0 rgba(255,255,255,.35);}
+.card:nth-child(2) .ico{background:linear-gradient(135deg,#22d3ee,#0369a1);box-shadow:0 8px 22px -8px rgba(34,211,238,.95),inset 0 1px 0 rgba(255,255,255,.35);}
+.card:nth-child(3) .ico{background:linear-gradient(135deg,#a78bfa,#6d28d9);box-shadow:0 8px 22px -8px rgba(139,92,246,.95),inset 0 1px 0 rgba(255,255,255,.35);}
+.card:nth-child(4) .ico{background:linear-gradient(135deg,#fb923c,#b91c1c);box-shadow:0 8px 22px -8px rgba(249,115,22,.95),inset 0 1px 0 rgba(255,255,255,.35);}
+.card:nth-child(5) .ico{background:linear-gradient(135deg,#34d399,#047857);box-shadow:0 8px 22px -8px rgba(16,185,129,.95),inset 0 1px 0 rgba(255,255,255,.35);}
+
+.card-title-wrap{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;}
+.card-cat{
+    font-size:.62rem;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;
+    color:var(--geo-300);opacity:.9;
+}
+.card h3{position:relative;z-index:1;margin:0;font-size:1.08rem;font-weight:800;line-height:1.25;letter-spacing:-.01em;color:#fff;}
+
+.card .desc{position:relative;z-index:1;margin:0 0 12px;font-size:.87rem;line-height:1.55;color:rgba(219,234,254,.72);}
+
+/* === NEW: TOPIC PREVIEW CHIPS === */
+.topic-preview{
+    position:relative;z-index:1;
+    display:flex;flex-wrap:wrap;gap:5px;
+    margin-bottom:12px;
+    padding:10px;
+    background:rgba(5,15,36,.4);
+    border-radius:10px;
+    border:1px solid rgba(96,165,250,.15);
+}
+.topic-preview-label{
+    font-size:.6rem;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--geo-300);opacity:.85;
+    width:100%;margin-bottom:4px;
+    display:flex;align-items:center;gap:5px;
+}
+.topic-preview-label i{font-size:.85em;}
+.topic-chip{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:.7rem;font-weight:700;
+    padding:4px 9px;
+    border-radius:7px;
+    background:rgba(96,165,250,.14);
+    border:1px solid rgba(96,165,250,.25);
+    color:#dbeafe;
+    line-height:1.3;
+    transition:all .25s;
+}
+.topic-chip i{font-size:.85em;color:var(--geo-300);}
+.card:hover .topic-chip{background:rgba(96,165,250,.22);border-color:rgba(96,165,250,.45);}
+
 .card-meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;padding-top:11px;border-top:1px dashed rgba(96,165,250,.25);}
 .meta-item{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:700;color:rgba(219,234,254,.85);background:rgba(96,165,250,.12);padding:4px 9px;border-radius:7px;border:1px solid rgba(96,165,250,.18);}
 .meta-item i{font-size:.85em;color:var(--geo-300);}
@@ -228,6 +245,7 @@ body::after{
 .meta-item.diff-med{background:rgba(96,165,250,.16);color:#dbeafe;border-color:rgba(96,165,250,.35);}
 .meta-item.diff-hard{background:rgba(139,92,246,.18);color:#ddd6fe;border-color:rgba(139,92,246,.4);}
 .meta-item.diff-hard i{color:#c4b5fd;}
+
 .mini-btn{position:relative;z-index:1;margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 14px;font-family:inherit;font-size:.92rem;font-weight:800;letter-spacing:.01em;color:#fff;border-radius:11px;background:linear-gradient(120deg,var(--geo-500),var(--geo-400) 50%,var(--cyan));background-size:200% 100%;box-shadow:0 10px 22px -12px rgba(29,78,216,.9),inset 0 1px 0 rgba(255,255,255,.3);overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background-position .6s;min-height:44px;border:1px solid rgba(147,197,253,.25);}
 .card-link:hover .mini-btn{transform:translateY(-2px);background-position:100% 0;box-shadow:0 14px 28px -10px rgba(37,99,235,.95);}
 .mini-btn::after{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s ease;}
@@ -277,7 +295,6 @@ body::after{
 .footer-col ul li a i{font-size:.9em;color:var(--geo-400);flex-shrink:0;}
 .footer-col ul li a.locked-link{opacity:.55;cursor:not-allowed;pointer-events:none;}
 .footer-col ul li a.locked-link i{color:#94a3b8;}
-
 .footer-credit{max-width:1020px;margin:22px auto 0;padding-top:16px;border-top:1px solid rgba(37,99,235,.18);text-align:center;display:flex;flex-direction:column;gap:5px;}
 .footer-credit .line{width:50px;height:2px;margin:0 auto 12px;border-radius:999px;background:linear-gradient(90deg,var(--geo-600),var(--geo-300),var(--purple),var(--geo-600));background-size:200% 100%;animation:lineSlide 4s linear infinite;}
 .footer-credit .credit-author{display:block;font-family:'Space Grotesk','Plus Jakarta Sans',sans-serif;font-size:.86rem;font-weight:600;letter-spacing:0.3px;line-height:1.6;color:var(--geo-800);}
@@ -307,14 +324,15 @@ body::after{
     .header{padding:60px 16px 84px;border-radius:0 0 26px 26px;}
     .stats-section{margin-top:-46px;padding:0 12px;}
     .section{padding:34px 14px 14px;}
-    .grid{grid-template-columns:1fr 1fr;gap:12px;}
+    .grid{grid-template-columns:1fr;gap:14px;}
     .card{padding:16px 14px 14px;border-radius:15px;}
-    .card .ico{width:42px;height:42px;font-size:20px;border-radius:11px;margin-bottom:10px;}
+    .card .ico{width:46px;height:46px;font-size:20px;border-radius:12px;}
     .card h3{font-size:1rem;}
-    .card .desc{font-size:.85rem;line-height:1.55;}
+    .card .desc{font-size:.83rem;line-height:1.5;}
+    .topic-chip{font-size:.66rem;padding:3px 8px;}
     .card-meta{gap:5px;padding-top:9px;margin-bottom:10px;}
-    .meta-item{font-size:.7rem;padding:3px 8px;}
-    .badge{font-size:.68rem;padding:4px 10px;top:11px;right:11px;}
+    .meta-item{font-size:.68rem;padding:3px 8px;}
+    .badge{font-size:.66rem;padding:4px 10px;top:11px;right:11px;}
     .mini-btn{padding:9px 12px;font-size:.86rem;min-height:40px;}
     .mini-btn .play{width:20px;height:20px;font-size:8px;}
     .mini-btn .newwin{font-size:.78rem;}
@@ -329,7 +347,6 @@ body::after{
     .stats-grid{grid-template-columns:1fr 1fr;gap:10px;padding:14px 14px;}
     .stat-num{font-size:1.5rem;}
     .stat-lbl{font-size:.68rem;}
-    .grid{grid-template-columns:1fr;gap:12px;}
 }
 @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
@@ -355,7 +372,6 @@ body::after{
     <div class="loader-percent"><b id="loaderPct">0</b>%</div>
 </div>
 
-<!-- CURSOR AURA -->
 <div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
 
 <!-- NAVBAR -->
@@ -377,7 +393,6 @@ body::after{
     <span class="blob b4"></span>
 </div>
 
-<!-- FLOATING PARTICLES -->
 <div class="particles" id="particles" aria-hidden="true"></div>
 
 <!-- HERO -->
@@ -399,9 +414,9 @@ body::after{
         </a>
     </div>
     <div class="chips">
-        <i>🎮 5 Misi Utama</i>
-        <i>🕹️ 32 Mini Game</i>
-        <i>⭐ Skor &amp; Pembahasan</i>
+        <i><i class="fas fa-gamepad"></i> 5 Misi Utama</i>
+        <i><i class="fas fa-puzzle-piece"></i> 32 Mini Game</i>
+        <i><i class="fas fa-star"></i> Skor &amp; Pembahasan</i>
     </div>
 </header>
 
@@ -436,18 +451,31 @@ body::after{
 
     <div class="grid">
 
-        <!-- BAB 1 -->
+        <!-- ===== MISI 1 : MEMAHAMI GEOGRAFI ===== -->
         <a class="card card-link reveal" href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/memahamigeografi.html"
            target="_blank" rel="noopener noreferrer"
-           aria-label="Buka game Memahami Geografi (tab baru)">
-            <span class="badge">Bab 1 · Siap</span>
-            <span class="ico">🧭</span>
-            <h3>Memahami Geografi</h3>
-            <p class="desc">Konsep, objek studi, prinsip, dan pendekatan geografi.</p>
+           aria-label="Buka Misi 1 : Memahami Geografi (tab baru)">
+            <span class="badge">Misi 1 · Siap</span>
+            <div class="card-head">
+                <span class="ico"><i class="fas fa-book-open-reader"></i></span>
+                <div class="card-title-wrap">
+                    <span class="card-cat"><i class="fas fa-graduation-cap"></i> KONSEP DASAR</span>
+                    <h3>Misi 1 : Memahami Geografi</h3>
+                </div>
+            </div>
+            <p class="desc">Fondasi berpikir geografis — belajar konsep, objek studi, prinsip, dan pendekatan geografi.</p>
+
+            <div class="topic-preview">
+                <span class="topic-preview-label"><i class="fas fa-list-ul"></i> Yang Akan Dipelajari</span>
+                <span class="topic-chip"><i class="fas fa-lightbulb"></i> Konsep Geografi</span>
+                <span class="topic-chip"><i class="fas fa-cubes"></i> Objek Studi</span>
+                <span class="topic-chip"><i class="fas fa-compass"></i> Prinsip &amp; Pendekatan</span>
+            </div>
+
             <div class="card-meta">
-                <span class="meta-item diff-easy"><i class="fas fa-circle"></i> Mudah</span>
+                <span class="meta-item diff-easy"><i class="fas fa-circle-check"></i> Mudah</span>
                 <span class="meta-item"><i class="fas fa-clock"></i> ± 45 mnt</span>
-                <span class="meta-item"><i class="fas fa-list-check"></i> 6 Game</span>
+                <span class="meta-item"><i class="fas fa-puzzle-piece"></i> 6 Game</span>
             </div>
             <span class="mini-btn">
                 <span class="play"><i class="fas fa-play"></i></span> Buka
@@ -455,18 +483,31 @@ body::after{
             </span>
         </a>
 
-        <!-- BAB 2 -->
+        <!-- ===== MISI 2 : PETA & PEMETAAN ===== -->
         <a class="card card-link reveal" href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/peta.html"
            target="_blank" rel="noopener noreferrer"
-           aria-label="Buka game Peta & Pemetaan (tab baru)">
-            <span class="badge">Bab 2 · Siap</span>
-            <span class="ico">🗺️</span>
-            <h3>Peta &amp; Pemetaan</h3>
-            <p class="desc">Jenis peta, skala, proyeksi, komponen peta, dan teknik pemetaan.</p>
+           aria-label="Buka Misi 2 : Peta & Pemetaan (tab baru)">
+            <span class="badge">Misi 2 · Siap</span>
+            <div class="card-head">
+                <span class="ico"><i class="fas fa-map-location-dot"></i></span>
+                <div class="card-title-wrap">
+                    <span class="card-cat"><i class="fas fa-drafting-compass"></i> KARTOGRAFI</span>
+                    <h3>Misi 2 : Peta &amp; Pemetaan</h3>
+                </div>
+            </div>
+            <p class="desc">Belajar membaca dan membuat peta — dari jenis peta, skala, proyeksi, hingga komponennya.</p>
+
+            <div class="topic-preview">
+                <span class="topic-preview-label"><i class="fas fa-list-ul"></i> Yang Akan Dipelajari</span>
+                <span class="topic-chip"><i class="fas fa-map"></i> Jenis Peta</span>
+                <span class="topic-chip"><i class="fas fa-ruler-combined"></i> Skala &amp; Proyeksi</span>
+                <span class="topic-chip"><i class="fas fa-list-check"></i> Komponen Peta</span>
+            </div>
+
             <div class="card-meta">
-                <span class="meta-item diff-med"><i class="fas fa-circle"></i> Sedang</span>
+                <span class="meta-item diff-med"><i class="fas fa-circle-check"></i> Sedang</span>
                 <span class="meta-item"><i class="fas fa-clock"></i> ± 60 mnt</span>
-                <span class="meta-item"><i class="fas fa-list-check"></i> 6 Game</span>
+                <span class="meta-item"><i class="fas fa-puzzle-piece"></i> 6 Game</span>
             </div>
             <span class="mini-btn">
                 <span class="play"><i class="fas fa-play"></i></span> Buka
@@ -474,40 +515,64 @@ body::after{
             </span>
         </a>
 
-        <!-- BAB 3 -->
-        <a class="card card-locked reveal" href="javascript:void(0)"
-           onclick="showComingSoon(event,'Bab 3 · Penelitian Geografi')"
-           aria-label="Bab 3 — Masih dalam proses">
-            <span class="locked-ribbon">Proses</span>
-            <span class="badge">Bab 3</span>
-            <span class="ico">📡</span>
-            <h3>Penelitian Geografi</h3>
-            <p class="desc">Merumuskan masalah, mengumpulkan data, hingga menyusun laporan.</p>
+        <!-- ===== MISI 3 : PENELITIAN GEOGRAFI ===== -->
+        <a class="card card-link reveal" href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/penelitigeo.html"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Buka Misi 3 : Penelitian Geografi (tab baru)">
+            <span class="badge">Misi 3 · Siap</span>
+            <div class="card-head">
+                <span class="ico"><i class="fas fa-microscope"></i></span>
+                <div class="card-title-wrap">
+                    <span class="card-cat"><i class="fas fa-flask"></i> METODE RISET</span>
+                    <h3>Misi 3 : Penelitian Geografi</h3>
+                </div>
+            </div>
+            <p class="desc">Langkah menjadi peneliti muda — merumuskan masalah, mengumpulkan data, hingga menulis laporan.</p>
+
+            <div class="topic-preview">
+                <span class="topic-preview-label"><i class="fas fa-list-ul"></i> Yang Akan Dipelajari</span>
+                <span class="topic-chip"><i class="fas fa-question-circle"></i> Rumusan Masalah</span>
+                <span class="topic-chip"><i class="fas fa-database"></i> Pengumpulan Data</span>
+                <span class="topic-chip"><i class="fas fa-file-lines"></i> Laporan Hasil</span>
+            </div>
+
             <div class="card-meta">
-                <span class="meta-item diff-med"><i class="fas fa-circle"></i> Sedang</span>
+                <span class="meta-item diff-med"><i class="fas fa-circle-check"></i> Sedang</span>
                 <span class="meta-item"><i class="fas fa-clock"></i> ± 60 mnt</span>
-                <span class="meta-item"><i class="fas fa-list-check"></i> 6 Game</span>
+                <span class="meta-item"><i class="fas fa-puzzle-piece"></i> 6 Game</span>
             </div>
             <span class="mini-btn">
-                <span class="play"><i class="fas fa-lock"></i></span> Segera Hadir
+                <span class="play"><i class="fas fa-play"></i></span> Buka
+                <span class="newwin"><i class="fas fa-arrow-up-right-from-square"></i></span>
             </span>
-            <span class="locked-overlay"><span class="lock-icon"><i class="fas fa-lock"></i></span></span>
-            <span class="locked-label"><i class="fas fa-hourglass-half"></i> Masih dalam proses</span>
         </a>
 
-        <!-- BAB 4 -->
+        <!-- ===== MISI 4 : BUMI & DINAMIKANYA (LOCKED) ===== -->
         <a class="card card-locked reveal" href="javascript:void(0)"
-           onclick="showComingSoon(event,'Bab 4 · Bumi & Dinamikanya')"
-           aria-label="Bab 4 — Masih dalam proses">
+           onclick="showComingSoon(event,'Misi 4 · Bumi & Dinamikanya')"
+           aria-label="Misi 4 — Masih dalam proses">
             <span class="locked-ribbon">Proses</span>
-            <span class="badge">Bab 4</span>
-            <span class="ico">🌋</span>
-            <h3>Bumi &amp; Dinamikanya</h3>
-            <p class="desc">Litosfer, atmosfer, hidrosfer, serta fenomena alam dan mitigasinya.</p>
+            <span class="badge">Misi 4</span>
+            <div class="card-head">
+                <span class="ico"><i class="fas fa-volcano"></i></span>
+                <div class="card-title-wrap">
+                    <span class="card-cat"><i class="fas fa-mountain-sun"></i> GEOSFER</span>
+                    <h3>Misi 4 : Bumi &amp; Dinamikanya</h3>
+                </div>
+            </div>
+            <p class="desc">Menjelajahi lapisan bumi — litosfer, atmosfer, hidrosfer, dan fenomena alam beserta mitigasinya.</p>
+
+            <div class="topic-preview">
+                <span class="topic-preview-label"><i class="fas fa-list-ul"></i> Yang Akan Dipelajari</span>
+                <span class="topic-chip"><i class="fas fa-fire"></i> Litosfer &amp; Vulkanisme</span>
+                <span class="topic-chip"><i class="fas fa-cloud-sun"></i> Atmosfer &amp; Iklim</span>
+                <span class="topic-chip"><i class="fas fa-water"></i> Hidrosfer &amp; Mitigasi</span>
+            </div>
+
             <div class="card-meta">
-                <span class="meta-item diff-hard"><i class="fas fa-circle"></i> Menantang</span>
+                <span class="meta-item diff-hard"><i class="fas fa-circle-check"></i> Menantang</span>
                 <span class="meta-item"><i class="fas fa-clock"></i> ± 75 mnt</span>
-                <span class="meta-item"><i class="fas fa-list-check"></i> 7 Game</span>
+                <span class="meta-item"><i class="fas fa-puzzle-piece"></i> 7 Game</span>
             </div>
             <span class="mini-btn">
                 <span class="play"><i class="fas fa-lock"></i></span> Segera Hadir
@@ -516,19 +581,32 @@ body::after{
             <span class="locked-label"><i class="fas fa-hourglass-half"></i> Masih dalam proses</span>
         </a>
 
-        <!-- BAB 5 -->
+        <!-- ===== MISI 5 : DINAMIKA KEPENDUDUKAN (LOCKED) ===== -->
         <a class="card card-locked reveal" href="javascript:void(0)"
-           onclick="showComingSoon(event,'Bab 5 · Dinamika Kependudukan')"
-           aria-label="Bab 5 — Masih dalam proses">
+           onclick="showComingSoon(event,'Misi 5 · Dinamika Kependudukan')"
+           aria-label="Misi 5 — Masih dalam proses">
             <span class="locked-ribbon">Proses</span>
-            <span class="badge">Bab 5</span>
-            <span class="ico">👥</span>
-            <h3>Dinamika Kependudukan</h3>
-            <p class="desc">Sensus, piramida penduduk, migrasi, dan kualitas lingkungan hidup.</p>
+            <span class="badge">Misi 5</span>
+            <div class="card-head">
+                <span class="ico"><i class="fas fa-people-group"></i></span>
+                <div class="card-title-wrap">
+                    <span class="card-cat"><i class="fas fa-users"></i> ANTROPOSFER</span>
+                    <h3>Misi 5 : Dinamika Kependudukan</h3>
+                </div>
+            </div>
+            <p class="desc">Memahami manusia dan lingkungannya — sensus, piramida penduduk, migrasi, dan kualitas hidup.</p>
+
+            <div class="topic-preview">
+                <span class="topic-preview-label"><i class="fas fa-list-ul"></i> Yang Akan Dipelajari</span>
+                <span class="topic-chip"><i class="fas fa-clipboard-list"></i> Sensus Penduduk</span>
+                <span class="topic-chip"><i class="fas fa-chart-simple"></i> Piramida Penduduk</span>
+                <span class="topic-chip"><i class="fas fa-people-arrows"></i> Migrasi &amp; Lingkungan</span>
+            </div>
+
             <div class="card-meta">
-                <span class="meta-item diff-hard"><i class="fas fa-circle"></i> Menantang</span>
+                <span class="meta-item diff-hard"><i class="fas fa-circle-check"></i> Menantang</span>
                 <span class="meta-item"><i class="fas fa-clock"></i> ± 80 mnt</span>
-                <span class="meta-item"><i class="fas fa-list-check"></i> 7 Game</span>
+                <span class="meta-item"><i class="fas fa-puzzle-piece"></i> 7 Game</span>
             </div>
             <span class="mini-btn">
                 <span class="play"><i class="fas fa-lock"></i></span> Segera Hadir
@@ -568,11 +646,11 @@ body::after{
         <div class="footer-col">
             <h4>Misi</h4>
             <ul>
-                <li><a href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/memahamigeografi.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> Bab 1 · Memahami Geografi</a></li>
-                <li><a href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/peta.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-gamepad"></i> Bab 2 · Peta &amp; Pemetaan</a></li>
-                <li><a class="locked-link" href="javascript:void(0)"><i class="fas fa-lock"></i> Bab 3 · Penelitian</a></li>
-                <li><a class="locked-link" href="javascript:void(0)"><i class="fas fa-lock"></i> Bab 4 · Bumi</a></li>
-                <li><a class="locked-link" href="javascript:void(0)"><i class="fas fa-lock"></i> Bab 5 · Penduduk</a></li>
+                <li><a href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/memahamigeografi.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open-reader"></i> Misi 1 · Memahami Geografi</a></li>
+                <li><a href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/peta.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-map-location-dot"></i> Misi 2 · Peta &amp; Pemetaan</a></li>
+                <li><a href="https://maedafarhansyah-pixel.github.io/game-geografi-kelas10/penelitigeo.html" target="_blank" rel="noopener noreferrer"><i class="fas fa-microscope"></i> Misi 3 · Penelitian Geografi</a></li>
+                <li><a class="locked-link" href="javascript:void(0)"><i class="fas fa-lock"></i> Misi 4 · Bumi</a></li>
+                <li><a class="locked-link" href="javascript:void(0)"><i class="fas fa-lock"></i> Misi 5 · Penduduk</a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -666,7 +744,7 @@ body::after{
 })();
 function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
 
-/* === MODERN: CURSOR AURA === */
+/* CURSOR AURA */
 (function(){
     var aura=document.getElementById('cursorAura');
     if(!aura)return;
@@ -674,15 +752,14 @@ function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
     var mx=window.innerWidth/2,my=window.innerHeight/2,cx=mx,cy=my;
     window.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;},{passive:true});
     function loop(){
-        cx+=(mx-cx)*0.08;
-        cy+=(my-cy)*0.08;
+        cx+=(mx-cx)*0.08;cy+=(my-cy)*0.08;
         aura.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
         requestAnimationFrame(loop);
     }
     loop();
 })();
 
-/* === MODERN: CARD SPOTLIGHT (mouse follow) === */
+/* CARD SPOTLIGHT */
 document.querySelectorAll('.card').forEach(function(card){
     card.addEventListener('mousemove',function(e){
         var r=card.getBoundingClientRect();
@@ -697,7 +774,7 @@ document.querySelectorAll('.card').forEach(function(card){
     });
 });
 
-/* === MODERN: FLOATING PARTICLES === */
+/* PARTICLES */
 function initParticles(){
     var container=document.getElementById('particles');
     if(!container)return;
@@ -707,8 +784,7 @@ function initParticles(){
     for(var i=0;i<count;i++){
         var s=document.createElement('span');
         var size=3+Math.random()*3;
-        s.style.width=size+'px';
-        s.style.height=size+'px';
+        s.style.width=size+'px';s.style.height=size+'px';
         s.style.left=Math.random()*100+'%';
         s.style.animationDuration=(14+Math.random()*16)+'s';
         s.style.animationDelay=(Math.random()*20)+'s';
@@ -789,7 +865,7 @@ function toggleMotion(){
     try{localStorage.setItem('geo_motion',on?'0':'1');}catch(e){}
 }
 
-/* RESTORE SETTINGS */
+/* RESTORE */
 (function(){
     try{
         if(localStorage.getItem('geo_sound')==='0'){muted=true;var btn=document.getElementById('soundBtn');if(btn)btn.innerHTML='<i class="fas fa-volume-xmark"></i>';}
